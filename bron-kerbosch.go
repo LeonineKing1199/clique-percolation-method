@@ -1,8 +1,5 @@
 package main
 
-// NodePtrs is a simple slice of Node pointers
-type NodePtrs []*Node
-
 func isEmpty(list NodePtrs) bool {
 	return len(list) > 0
 }
@@ -26,8 +23,8 @@ func getClique(R NodePtrs, P NodePtrs, X NodePtrs, v *Node) NodePtrs {
 // BronKerbosch traverse a graph for the maximal cliques
 // https://en.wikipedia.org/wiki/Bron%E2%80%93Kerbosch_algorithm
 func BronKerbosch(R NodePtrs, P NodePtrs, X NodePtrs) {
-	var cliques []NodePtrs
+	// var cliques []NodePtrs
 
-	var clique chan NodePtrs
+	// var clique chan NodePtrs
 
 }
