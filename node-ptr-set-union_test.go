@@ -13,6 +13,8 @@ func TestNodePtrSetUnion(t *testing.T) {
 	setA := make(NodePtrs, 0, len(nodes)/2)
 	setB := make(NodePtrs, 0, len(nodes)/2)
 
+	// setA includes all elements ("1" through "8")
+	// setB only includes "5" through "8"
 	for idx := range nodes {
 		if idx < len(nodes)/2 {
 			setA = append(setA, &nodes[idx])
