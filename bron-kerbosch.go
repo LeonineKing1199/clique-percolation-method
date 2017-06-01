@@ -1,22 +1,46 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func isEmpty(list NodePtrs) bool {
 	return len(list) > 0
 }
 
+func printNodePtrs(message string, ptrs NodePtrs) {
+	fmt.Println(message)
+	for idx := range ptrs {
+		fmt.Println(ptrs[idx].userData.name)
+	}
+}
+
 // BronKerbosch traverse a graph for the maximal cliques
 // https://en.wikipedia.org/wiki/Bron%E2%80%93Kerbosch_algorithm
 func BronKerbosch(R NodePtrs, P NodePtrs, X NodePtrs) NodePtrs {
+	sort.Sort(P)
+
+	fmt.Println("New stack frame")
+
+	printNodePtrs("R is:", R)
+
+	printNodePtrs("P is:", P)
+
+	printNodePtrs("X is:", X)
+
+	fmt.Println("")
+
 	if isEmpty(P) && isEmpty(X) {
 		return R
 	}
 
-	for idx := range P {
-		v := P[idx]
+	numVertices := len(P)
 
-		fmt.Printf("testing: %q\n", v.userData.name)
+	idx := 0
+
+	for numVertices > 0 {
+		v := P[idx]
 
 		tmp := BronKerbosch(
 			NodePtrSetUnion(R, NodePtrs{v}),
@@ -29,6 +53,14 @@ func BronKerbosch(R NodePtrs, P NodePtrs, X NodePtrs) NodePtrs {
 
 		P = NodePtrSetComplement(P, NodePtrs{v})
 		X = NodePtrSetUnion(X, NodePtrs{v})
+
+		sort.Sort(P)
+
+		numVertices = len(P)
+
+		if idx < numVertices && P[idx] == v {
+			idx++
+		}
 	}
 
 	return NodePtrs{}
