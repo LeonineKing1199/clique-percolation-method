@@ -1,8 +1,17 @@
 package main
 
+import "fmt"
+
 // NodePtrSetUnion takes two slices of node pointers and then
 // retrieves the union of them, preserving only unique elements
 func NodePtrSetUnion(setA NodePtrs, setB NodePtrs) NodePtrs {
+	// fmt.Println("\nFinding union between:")
+
+	// PrintNodePtrs("setA:", setA)
+	// PrintNodePtrs("setB:", setB)
+
+	fmt.Println()
+
 	nodePtrsMap := map[*Node]bool{}
 
 	for idx := range setA {
@@ -18,6 +27,8 @@ func NodePtrSetUnion(setA NodePtrs, setB NodePtrs) NodePtrs {
 	for key := range nodePtrsMap {
 		nodePtrs = append(nodePtrs, key)
 	}
+
+	// PrintNodePtrs("Output:", nodePtrs)
 
 	return nodePtrs
 }

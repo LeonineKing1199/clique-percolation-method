@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // UserData will function as our customization point
 type UserData struct {
 	name string
@@ -21,4 +23,14 @@ func (nodePtrs NodePtrs) Swap(a, b int) {
 }
 func (nodePtrs NodePtrs) Less(a, b int) bool {
 	return nodePtrs[a].userData.name < nodePtrs[b].userData.name
+}
+
+// PrintNodePtrs is a simple utility function that prints a message
+// and then prints the name of each node in the slice
+func PrintNodePtrs(message string, ptrs NodePtrs) {
+	fmt.Println(message)
+	for idx := range ptrs {
+		fmt.Println(ptrs[idx].userData.name)
+	}
+	fmt.Println()
 }

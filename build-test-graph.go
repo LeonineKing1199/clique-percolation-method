@@ -18,11 +18,11 @@ func BuildTestGraph() []Node {
 		indices  []uint
 	}{
 		makeUserData("1", 2, 1, 7),
-		makeUserData("2", 0, 2, 7),
+		makeUserData("2", 0, 2, 7, 3, 4, 5),
 		makeUserData("3", 0, 1, 6),
 		makeUserData("4", 1, 5, 4),
 		makeUserData("5", 1, 3, 5),
-		makeUserData("6", 1, 3, 4),
+		makeUserData("6", 1, 3, 4, 6),
 		makeUserData("7", 2, 5),
 		makeUserData("8", 0, 1),
 	}

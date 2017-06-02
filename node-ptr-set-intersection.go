@@ -4,6 +4,13 @@ package main
 // slices of node pointers
 // intersection = elements common to both sets
 func NodePtrSetIntersection(setA NodePtrs, setB NodePtrs) NodePtrs {
+	// fmt.Println("\nFinding intersection between:")
+
+	// PrintNodePtrs("setA:", setA)
+	// PrintNodePtrs("setB:", setB)
+
+	// fmt.Println()
+
 	setAMap := map[*Node]bool{}
 	setBMap := map[*Node]bool{}
 
@@ -34,6 +41,8 @@ func NodePtrSetIntersection(setA NodePtrs, setB NodePtrs) NodePtrs {
 	for key := range intersectingNodePtrs {
 		nodePtrs = append(nodePtrs, key)
 	}
+
+	// PrintNodePtrs("Output:", nodePtrs)
 
 	return nodePtrs
 }
